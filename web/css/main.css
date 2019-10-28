@@ -161,6 +161,7 @@ nav i:hover {
     font-weight: normal;
     font-size: 17px;
     text-align: justify;
+    height: 120px;
 }
 .landing-content p a{
     text-align: center!important;

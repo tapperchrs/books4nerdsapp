@@ -33,8 +33,7 @@
 
             <link rel="icon" 
                   type="image/png" 
-                  href="images/books4nerds_secondary_black_transparent.png">
-
+                  src="images/books4nerds_secondary_black_transparent.png">
             <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
 
             <link href="https://fonts.googleapis.com/css?family=Miniver&display=swap" rel="stylesheet">
