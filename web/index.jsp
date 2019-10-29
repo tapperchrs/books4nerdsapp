@@ -32,10 +32,13 @@
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <div class="container">
+                    <%
+                        rs.next();
+                    %>
                     <div class="jumbo-content col-lg-8">
                         <h2>Books 4 Nerds Presents:</h2>
                         <h1>Deal of The Day</h1>
-                        <p>Creating Killer Interactive Sites</p>
+                        <p><%= rs.getString("title")%></p>
                         <p>15% Off + Free Shipping</p>
                         <div class="mini-img col-md-12">
                             <img src="images/books4nerds_secondary_black_transparent.png" alt=""/>
@@ -44,8 +47,11 @@
 
                     </div>
                     <div class="jumbo-image col-lg-4">
-                        <img src="images/KillerInteractiveSites.gif" alt=""/>
+                        <img src="<%= rs.getString("coverpic")%>" alt=""/>
                     </div>
+                    <%
+
+                    %>
                 </div>
             </div>
             <div class="container landing-content">
@@ -54,13 +60,13 @@
                     <h1 class="col-lg-12">
                         Featured Books
                     </h1>
-                    <% 
+                    <%                        
                         while (rs.next()) {
                     %>   
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <h2><%= rs.getString("title")%></h2>
-                        <img src="<%= rs.getString("coverpic") %>" alt=""/>
+                        <img src="<%= rs.getString("coverpic")%>" alt=""/>
                         <p id="justify"> <%= rs.getString("description")%> </p>
                         <div class="col-md-12">
                             <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
