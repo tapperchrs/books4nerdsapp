@@ -60,13 +60,29 @@
                     <h1 class="col-lg-12">
                         Featured Books
                     </h1>
-                    <%                        
-                        while (rs.next()) {
+                    <%                        while (rs.next()) {
                     %>   
 
                     <div class="col-md-4">
                         <h2><%= rs.getString("title")%></h2>
                         <img src="<%= rs.getString("coverpic")%>" alt=""/>
+                        <h4 style="text-align: center; font-size: 16px;">
+                            <%
+                                int stars = rs.getInt("stars");
+                                for (int i = 0; i < stars; i++) {
+                            %>
+                            <i style="color: gold;" class="material-icons">star</i>
+                            <%
+                                }
+                                int starsEMP = 5 - rs.getInt("stars");
+                                for (int j = 0; j < starsEMP; j++) {
+                            %>
+                            <i style="color: black;" class="material-icons">star_border</i>
+                            <%
+                            }
+                            %>
+
+                        </h4>
                         <p id="justify"> <%= rs.getString("description")%> </p>
                         <div class="col-md-12">
                             <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
