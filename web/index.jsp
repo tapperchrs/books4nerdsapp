@@ -43,7 +43,7 @@
                         <div class="mini-img col-md-12">
                             <img src="images/books4nerds_secondary_black_transparent.png" alt=""/>
                         </div>
-                        <p class="col-md-12"><a class="btn btn-primary btn-lg" href="book.html" role="button">View Book &raquo;</a></p>
+                        <p class="col-md-12"><a class="btn btn-primary btn-lg" href="book.jsp" role="button">View Book &raquo;</a></p>
 
                     </div>
                     <div class="jumbo-image col-lg-4">
@@ -85,8 +85,8 @@
                         </h4>
                         <p id="justify"> <%= rs.getString("description")%> </p>
                         <div class="col-md-12">
-                            <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                                <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
+                            <p><a class="btn btn-primary col-md-6" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button"><i class="material-icons">search</i></a>
+                                <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
                             </p>
                         </div>                   
                     </div>
