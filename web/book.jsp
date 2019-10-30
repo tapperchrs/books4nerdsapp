@@ -8,11 +8,12 @@
 <%
     String isbn = request.getParameter("isbn");
     String sql;
-    String dbURI = "jdbc:derby://localhost:1527/sample";
+    String dbURI = "jdbc:derby://localhost:1527/bookstore";
     DriverManager.registerDriver(new ClientDriver());
     Connection con = DriverManager.getConnection(dbURI, "app", "app");
     Statement stmt = con.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from product where isbn=" + isbn);
+    ResultSet rs = stmt.executeQuery("select * from app.books where isbn = '" +isbn +"'");
+    rs.next();
 %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
