@@ -84,20 +84,20 @@ nav i:hover {
     font-weight: bolder;
 }
 .jumbotron h2 {
-    font-size: 42px;
+    font-size: 60px;
+    text-shadow: 5px 5px 5px #BBB;
     font-kerning: normal;
     font-weight: bolder;
     font-family: 'Miniver', cursive;    
     text-align: center;
-    color:#222;
+    color:#DF3770;
 }
 .jumbotron h1 {
-    font-size: 96px;
-    text-shadow: 8px 8px 8px #BBB;
+    font-size: 72px;
     font-weight: bolder;
     font-family: 'Miniver', cursive;    
     text-align: center;
-    color:#DF3770;
+    color:#222;
 }
 .jumbotron p {
     font-family: 'Playfair Display', serif;
@@ -373,7 +373,7 @@ p {
     font-weight: bolder;
     padding-bottom: 30px;
 }
-#author, #isbn, #price, #avail {
+#author, #isbn, #price, #weight, #pub {
     font-size: 16px;
     font-family: 'Playfair Display', serif;
     text-align: left;
@@ -405,13 +405,6 @@ p {
 .book-content {
     padding: 20px 0;
 
-}
-.book-content .sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top:79px;
-    background-color: #FFF;
-    z-index: 5;
 }
 .book-content h1 {
     color: #222;
@@ -451,9 +444,9 @@ div #review strong {
     text-shadow: 1px 1px #333;
 }
 .related {
-    background-color: #222;
-    width: 100%;
-    margin: 0 auto;
+    background-color: #222;;
+    margin-left: auto;
+    margin-right:auto;
     display: block;
 }
 .related i {
@@ -480,6 +473,7 @@ div #review strong {
     text-align: center;
     font-weight: normal;
     font-size: 60px;
+    text-align: center;
 }
 .related p {
     color: #FFF;
@@ -496,31 +490,9 @@ div #review strong {
     width:100%;
     font-family: 'Playfair Display', serif;
 }
-.recommend .sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top:79px;
-    background-color: #FFF;
-    z-index: 5;
-
-}
 @media (max-width: 767px) {
     .sort p {
         visibility:hidden;
-    }
-    .recommend .sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top:94px;
-        background-color: #FFF;
-        z-index: 5;
-    }
-    .book-content .sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top:94px;
-        background-color: #FFF;
-        z-index: 5;
     }
 }
 

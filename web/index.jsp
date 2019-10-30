@@ -36,14 +36,14 @@
                         rs.next();
                     %>
                     <div class="jumbo-content col-lg-8">
-                        <h2>Books 4 Nerds Presents:</h2>
-                        <h1>Deal of The Day</h1>
+                        <h1>Books 4 Nerds Presents:</h1>
+                        <h2>Deal of The Day</h2>
                         <p><%= rs.getString("title")%></p>
                         <p>15% Off + Free Shipping</p>
                         <div class="mini-img col-md-12">
                             <img src="images/books4nerds_secondary_black_transparent.png" alt=""/>
                         </div>
-                        <p class="col-md-12"><a class="btn btn-primary btn-lg" href="book.jsp" role="button">View Book &raquo;</a></p>
+                        <p class="col-md-12"><a class="btn btn-primary btn-lg" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button">View Book &raquo;</a></p>
 
                     </div>
                     <div class="jumbo-image col-lg-4">
@@ -60,7 +60,8 @@
                     <h1 class="col-lg-12">
                         Featured Books
                     </h1>
-                    <%                        while (rs.next()) {
+                    <%                        
+                        while (rs.next()) {
                     %>   
 
                     <div class="col-md-4">

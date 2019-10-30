@@ -7,12 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String isbn = request.getParameter("isbn");
+    String category = request.getParameter("category");
     String sql;
     String dbURI = "jdbc:derby://localhost:1527/bookstore";
     DriverManager.registerDriver(new ClientDriver());
     Connection con = DriverManager.getConnection(dbURI, "app", "app");
     Statement stmt = con.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from app.books where isbn = '" +isbn +"'");
+    ResultSet rs = stmt.executeQuery("select * from booksquery where isbn = '" + isbn + "'");
     rs.next();
 %>
 <!DOCTYPE html>
@@ -31,22 +32,39 @@
         <div class="book">
             <div class="container">
                 <div class="col-lg-4">
-                    <img id="bookpageimg" src="images/KillerInteractiveSites.gif" alt="Killer Interactive"/>
+                    <img id="bookpageimg" src="<%= rs.getString("coverpic")%>" alt="Killer Interactive"/>
                 </div>
                 <div class="col-lg-8">
                     <h1 class="col-lg-12" id="bookpagetitle"><%= rs.getString("title")%></h1>
                     <h2 class="col-1g-12" id="author">Author: 
+                        <%=
                     </h2>
-                    <h2 class="col-1g-12" id="isbn">ISBN: ________</h2>
-                    <h2 class="col-lg-12" id="price">Price: $________</h2>
-                    <h2 class="col-lg-12" id="avail">Availability: ________</h2>
-                    <h2 class="col-lg-12" id="review">Average Customer Review: <i class="material-icons">star star star star star_border</i></h2>
-                    <div class="col-lg-12 btns">
-                        <div class="col-md-12">
-                            <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
-                                <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                            </p>
-                        </div>                       </div>
+                    <h2 class="col-1g-12" id="isbn">ISBN:  <%= rs.getString("isbn")%></h2>
+                    <h2 class="col-lg-12" id="price">Price:  $<%= rs.getString("price")%></h2>
+                    <h2 class="col-lg-12" id="pub">Year Published:  <%= rs.getString("pubdate")%></h2>
+                    <h2 class="col-lg-12" id="weight">Book Weight:  <%= rs.getString("unitweight")%></h2>
+                    <h2 class="col-lg-12" id="review">
+                        Average Customer Review:   
+                        <%
+                            int stars = rs.getInt("stars");
+                            for (int i = 0; i < stars; i++) {
+                        %>
+                        <i style="color: gold;" class="material-icons">star</i>
+                        <%
+                            }
+                            int starsEMP = 5 - rs.getInt("stars");
+                            for (int j = 0; j < starsEMP; j++) {
+                        %>
+                        <i style="color: black;" class="material-icons">star_border</i>
+                        <%
+                            }
+                        %>
+                        <div class="col-lg-12 btns">
+                            <div class="col-md-12">
+                                <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
+                                    <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
+                                </p>
+                            </div>                       </div>
                 </div>
             </div>
         </div>
@@ -59,50 +77,32 @@
                     </h1>
                 </div>
                 <div class="col-md-12">
-                    <p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.
-                    </p>
-                    <p>
-                        Fusce convallis, mauris imperdiet gravida bibendum, nisl turpis suscipit mauris, sed placerat ipsum urna sed risus. In convallis tellus a mauris. Curabitur non elit ut libero tristique sodales. Mauris a lacus. Donec mattis semper leo. In hac habitasse platea dictumst. Vivamus facilisis diam at odio. Mauris dictum, nisi eget consequat elementum, lacus ligula molestie metus, non feugiat orci magna ac sem. Donec turpis. Donec vitae metus. Morbi tristique neque eu mauris. Quisque gravida ipsum non sapien. Proin turpis lacus, scelerisque vitae, elementum at, lobortis ac, quam. Aliquam dictum eleifend risus. In hac habitasse platea dictumst. Etiam sit amet diam. Suspendisse odio. Suspendisse nunc. In semper bibendum libero.
-                    </p>
+                    <p><%= rs.getString("description")%></p>
                 </div>
             </div>
         </div>
-        <div class="related">
+
+        <div class="related col-lg-12">
             <div class="container">
-                <h1 class="row2 col-lg-12">
+                <h1 class="row2 col-md-12">
                     Related Books
                 </h1>
+                <%        
+                    ResultSet rg = stmt.executeQuery("select * from app.books where category = '" + category + "'");
+                    while (rg.next()) {
+                %>
                 <div class="col-lg-3">
                     <img src="images/bookimg/CreatingVirtualStore.gif" alt=""/>
                     <p class="col-sm-12 subtitle">Creating the Virtual Store</p>
                     <p class="col-sm-12"><i class="material-icons">star star star star_border star_border</i></p>
                     <p class="col-sm-12">Price: $__.__</p>
                 </div>
-                <div class="col-lg-3">
-                    <img src="images/bookimg/NonDesignerWebBook.gif" alt=""/>
-                    <p class="col-sm-12 subtitle">Non Designer Web Book</p>
-                    <p class="col-sm-12"><i class="material-icons">star star star star star_border</i></p>
-                    <p class="col-sm-12">Price: $__.__</p>
-                </div>
-                <div class="col-lg-3">
-                    <img src="images/bookimg/WebPageDesign.gif" alt=""/>
-                    <p class="col-sm-12 subtitle">Web Page Design</p>
-                    <p class="col-sm-12"><i class="material-icons">star star star star star</i></p>
-                    <p class="col-sm-12">Price: $__.__</p>
-                </div>
-                <div class="col-lg-3">
-                    <img src="images/bookimg/WebPubHTML.JPG" alt=""/>
-                    <p class="col-sm-12 subtitle">Web Publishing with HTML</p>
-                    <p class="col-sm-12"><i class="material-icons">star star star_border star_border star_border</i></p>
-                    <p class="col-sm-12">Price: $__.__</p>
-                </div>
+                <%
+                    }
+                %>
             </div>
         </div>
+
         <div class="recommend">
             <div class="container">
                 <div class="sticky">
