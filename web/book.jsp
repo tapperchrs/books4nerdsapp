@@ -37,18 +37,22 @@
                 <div class="col-lg-8">
                     <h1 class="col-lg-12" id="bookpagetitle"><%= rs.getString("title")%></h1>
                     <h2 class="col-1g-12" id="author">Author: 
-                        <%= rs.getString("au_firstname")%> <%= rs.getString("au_midname")%> <%= rs.getString("au_lastname")%>
+                        <i>
+                            <%= rs.getString("au_firstname")%> 
+                            <%=rs.getString("au_midname")%>
+                            <%= rs.getString("au_lastname")%>
+                        </i>
                     </h2>
-                    <h2 class="col-1g-12" id="isbn">ISBN:  <%= rs.getString("isbn")%></h2>
-                    <h2 class="col-lg-12" id="price">Price:  $<%= rs.getString("price")%></h2>
-                    <h2 class="col-lg-12" id="pub">Year Published:  <%= rs.getString("pubdate")%></h2>
-                    <h2 class="col-lg-12" id="weight">Book Weight:</h2>
-                        <div class="col-lg-12 btns">
-                            <div class="col-md-12">
-                                <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
-                                    <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                                </p>
-                            </div>                       </div>
+                    <h2 class="col-1g-12" id="isbn">ISBN:  <i><%= rs.getString("isbn")%></i></h2>
+                    <h2 class="col-lg-12" id="price">Price:  <i>$<%= rs.getString("price")%></i></h2>
+                    <h2 class="col-lg-12" id="pub">Year Published:  <i><%= rs.getString("pubdate")%></i></h2>
+                    <h2 class="col-lg-12" id="weight">Book Publisher: <i><%= rs.getString("pub_name")%></i></h2>
+                    <div class="col-lg-12 btns">
+                        <div class="col-md-12">
+                            <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
+                                <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
+                            </p>
+                        </div>                       </div>
                 </div>
             </div>
         </div>
@@ -71,8 +75,8 @@
                 <h1 class="row2 col-md-12">
                     Related Books
                 </h1>
-                <%        
-                    ResultSet rg = stmt.executeQuery("select * from app.books where category = '" + category + "'");
+                <%
+                    ResultSet rg = stmt.executeQuery("select * from booksquery where category = '" + category + "'");
                     while (rg.next()) {
                 %>
                 <div class="col-lg-3">

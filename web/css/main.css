@@ -379,10 +379,11 @@ p {
     text-align: left;
     font-weight: bold;
     color: #222;
-
 }
 .book i {
-    color: #3285DF;
+    color:#222;
+    font-weight: normal;
+    font-style: normal; 
 }
 .book .btn i {
     color:#FFF;
