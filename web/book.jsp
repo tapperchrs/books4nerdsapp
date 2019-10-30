@@ -37,28 +37,12 @@
                 <div class="col-lg-8">
                     <h1 class="col-lg-12" id="bookpagetitle"><%= rs.getString("title")%></h1>
                     <h2 class="col-1g-12" id="author">Author: 
-                        <%=
+                        <%= rs.getString("au_firstname")%> <%= rs.getString("au_midname")%> <%= rs.getString("au_lastname")%>
                     </h2>
                     <h2 class="col-1g-12" id="isbn">ISBN:  <%= rs.getString("isbn")%></h2>
                     <h2 class="col-lg-12" id="price">Price:  $<%= rs.getString("price")%></h2>
                     <h2 class="col-lg-12" id="pub">Year Published:  <%= rs.getString("pubdate")%></h2>
-                    <h2 class="col-lg-12" id="weight">Book Weight:  <%= rs.getString("unitweight")%></h2>
-                    <h2 class="col-lg-12" id="review">
-                        Average Customer Review:   
-                        <%
-                            int stars = rs.getInt("stars");
-                            for (int i = 0; i < stars; i++) {
-                        %>
-                        <i style="color: gold;" class="material-icons">star</i>
-                        <%
-                            }
-                            int starsEMP = 5 - rs.getInt("stars");
-                            for (int j = 0; j < starsEMP; j++) {
-                        %>
-                        <i style="color: black;" class="material-icons">star_border</i>
-                        <%
-                            }
-                        %>
+                    <h2 class="col-lg-12" id="weight">Book Weight:</h2>
                         <div class="col-lg-12 btns">
                             <div class="col-md-12">
                                 <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
