@@ -374,7 +374,7 @@ p {
     padding-bottom: 30px;
 }
 #author, #isbn, #price, #weight, #pub {
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Playfair Display', serif;
     text-align: left;
     font-weight: bold;

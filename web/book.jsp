@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String isbn = request.getParameter("isbn");
-    String category = request.getParameter("category");
+//    String category = rg.getString("category");
     String sql;
     String dbURI = "jdbc:derby://localhost:1527/bookstore";
     DriverManager.registerDriver(new ClientDriver());
@@ -15,6 +15,7 @@
     Statement stmt = con.createStatement();
     ResultSet rs = stmt.executeQuery("select * from booksquery where isbn = '" + isbn + "'");
     rs.next();
+    ResultSet rg = stmt.executeQuery("select * from booksquery where category = 'web' fetch first 4 rows only");
 %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -76,14 +77,13 @@
                     Related Books
                 </h1>
                 <%
-                    ResultSet rg = stmt.executeQuery("select * from booksquery where category = '" + category + "'");
-                    while (rg.next()) {
+                    
+                    while(rg.next()){
                 %>
                 <div class="col-lg-3">
-                    <img src="images/bookimg/CreatingVirtualStore.gif" alt=""/>
-                    <p class="col-sm-12 subtitle">Creating the Virtual Store</p>
-                    <p class="col-sm-12"><i class="material-icons">star star star star_border star_border</i></p>
-                    <p class="col-sm-12">Price: $__.__</p>
+                    <a href="book.jsp?isbn=<%= rg.getString("isbn")%>"><img src="<%= rg.getString("coverpic")%>" alt=""/></a>
+                    <p class="col-sm-12 subtitle"><%= rg.getString("title")%></p>
+                    <p class="col-sm-12">Price: $<%= rg.getString("price")%></p>
                 </div>
                 <%
                     }
@@ -98,11 +98,10 @@
                 </div>
 
                 <div class="col-lg-12">
-
                     <div class="rec col-lg-12">
                         <img class="col-lg-2" src="images/bezos.jpg" alt=""/>
                         <div class="col-lg-7 content">
-                            <h2>Jeff Bezos:  <i class="material-icons">star star star star star_half</i></h2>
+                            <h2>Jeff Bezos:</h2>
 
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -136,7 +135,7 @@
                     <div class="rec col-lg-12">
                         <img class="col-lg-2 people" src="images/jobs.jpg" alt=""/>
                         <div class="col-lg-7 content">
-                            <h2>Steve Jobs:  <i class="material-icons"> star star star_half star_border star_border</i></h2>
+                            <h2>Steve Jobs:</h2>
 
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -170,7 +169,7 @@
                     <div class="rec col-lg-12">
                         <img class="col-lg-2 people" src="images/gates.jpg" alt=""/>
                         <div class="col-lg-7 content">
-                            <h2>William Gates:  <i class="material-icons">star star star star star_border</i></h2>
+                            <h2>William Gates:</h2>
 
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
