@@ -14,7 +14,6 @@
     Statement stmt = con.createStatement();
     ResultSet rs = stmt.executeQuery("select * from booksquery where isbn = '" + isbn + "'");
     rs.next();
-    ResultSet rg = stmt.executeQuery("select * from booksquery where category = 'web' fetch first 4 rows only");
 %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
