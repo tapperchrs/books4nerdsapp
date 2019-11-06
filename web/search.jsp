@@ -3,48 +3,22 @@
     Created on : Oct 28, 2019, 1:32:26 PM
     Author     : 01792538
 --%>
-
+<%@page import="java.sql.*, org.apache.derby.jdbc.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String sql;
+    String dbURI = "jdbc:derby://localhost:1527/bookstore";
+    DriverManager.registerDriver(new ClientDriver());
+    Connection con = DriverManager.getConnection(dbURI, "app", "app");
+    Statement stmt = con.createStatement();
+    ResultSet rs = stmt.executeQuery("select * from booksquery");
+%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Books 4 Nerds</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-        <link rel="icon" 
-              type="image/png" 
-              href="images/books4nerds_secondary_black_transparent.png">
-        <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Miniver&display=swap" rel="stylesheet">
-        <link    href="https://fonts.googleapis.com/css?family=Alegreya|Crimson+Text:400i|EB+Garamond|Laila:300|Playfair+Display&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Delius+Swash+Caps|Rochester|Rock+Salt|Satisfy|Sunshiney&display=swap" rel="stylesheet">
-
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>
-            $(function () {
-                $('#header').load('navbar.html');
-                $('#footer').load('footer.html');
-            });
-        </script>   
-    </head>
+    <%@include file="WEB-INF/jspf/HEAD.jspf" %>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -59,130 +33,72 @@
             <div class="sort col-lg-12">
                 <h1>Filter By:</h1>
                 <div class="col-sm-12 sorted">
-                    <p class="col-sm-2">Author &#9660;</p>
-                    <p class="col-sm-2">Date Published &#9660;</p>
-                    <p class="col-sm-2">Edition &#9660;</p>
-                    <p class="col-sm-2">Name &#9660;</p>
-                    <p class="col-sm-2">Price &#9660;</p>
-                    <p class="col-sm-2">Rating &#9660;</p>
 
+                    <input class="col-sm-2" style="height:20px!important;" placeholder="ISBN"/>
 
+                    <input class="col-sm-2" style="height:20px!important;" placeholder="Author"/>
+
+                    <input class="col-sm-2" style="height:20px!important;" placeholder="Title"/>
+
+                    <select class="col-sm-2">
+                        <option value="Category" placeholder="Category" hidden="yes">Category</option>
+                        <option value="Category" placeholder="Category">Database</option>
+                        <option value="Category" placeholder="Category">Web</option>
+                        <option value="Category" placeholder="Category">Graphics</option>
+                        <option value="Category" placeholder="Category">Programming</option>
+                        <option value="Category" placeholder="Category">HTML</option>
+                        <option value="Category" placeholder="Category">Javascript</option>
+                    </select>
+
+                    <select class="col-sm-2">
+                        <option value="Price" placeholder="Price" hidden="yes">Price</option>
+                        <option value="Price" placeholder="Price">< $20.00</option>
+                        <option value="Price" placeholder="Price">$20.00 - $35.00</option>
+                        <option value="Price" placeholder="Price">> $35.00</option>
+                    </select>
+
+                    <select class="col-sm-2">
+                        <option value="Publisher" placeholder="Publisher" hidden="yes">Publisher</option>
+                        <option value="Publisher" placeholder="Publisher">Publisher</option>
+                        <option value="Publisher" placeholder="Publisher">Publisher</option>
+                    </select>
                 </div>
             </div>
             <div class="items col-md-12">
+                <%
+                    while (rs.next()) {
+
+                %>
                 <div class="col-md-3">
-                    <h2>Elements of Web Design</h2>
-                    <img src="images/bookimg/ElementsOfWebDesign.gif" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
+                    <h2><%= rs.getString("title")%></h2>
+                    <img src="<%= rs.getString("coverpic")%>" alt="<%= rs.getString("title")%>"/>
+                    <p>Author: <%= rs.getString("au_firstname")%> <%= rs.getString("au_midname")%> <%= rs.getString("au_lastname")%></p>
+                    <p>Price: $<%= rs.getString("price")%></p>
+                    <p>Publisher: <%= rs.getString("pub_name")%></p>
                     <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
+                        <p><a class="btn btn-primary col-md-6" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button"><i class="material-icons">search</i></a>
                             <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
                         </p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <h2>The Practical SQL</h2>
-                    <img src="images/bookimg/PracticalSQL.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star star</i></h2>
-
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>The Non-Designer's Web Book</h2>
-                    <img src="images/bookimg/NonDesignerWebBook.gif" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>Web Publishing with HTML</h2>
-                    <img src="images/bookimg/WebPubHTML.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star_border star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>The Web Design Wow! Book</h2>
-                    <img src="images/bookimg/WebWow.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star star</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>Photoshop 4 Bible</h2>
-                    <img src="images/bookimg/PS4Bible.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star star_border star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>Oracle</h2>
-                    <img src="images/bookimg/Oracle.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star_border star_border star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                </div>
-                <div class="col-md-3">
-                    <h2>Active Server Pages 2.0 - Professional</h2>
-                    <img src="images/bookimg/ProASP.JPG" alt=""/>
-                    <h2 class="col-sm-12" id="review"><i class="material-icons">star star star_border star_border star_border</i></h2>
-                    <p>Author</p>
-                    <p>Price</p>
-                    <p>Availability</p>
-                    <div class="col-md-12">
-                        <p><a class="btn btn-primary col-md-6" href="book.html" role="button"><i class="material-icons">search</i></a>
-                            <a class="btn btn-primary col-md-6" href="cart.html" role="button"><i class="material-icons">add_shopping_cart</i></a>
-                        </p>
-                    </div>                
-                </div>
-                <p style="text-align: center; margin-top: 40px;" class="cart-title"><a class="btn btn-primary btn-lg" href="#" role="button">View More &raquo;</a></p>            
-
+                <%
+                    }
+                %>
             </div>
+            <p style="text-align: center; margin-top: 40px;" class="cart-title"><a class="btn btn-primary btn-lg" href="#" role="button">View More &raquo;</a></p>            
 
         </div>
 
-        <div id="footer"></div>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>
+    </div>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+    <div id="footer"></div>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>');</script>
 
-        <script src="js/main.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 
-    </body>
+    <script src="js/main.js"></script>
+
+</body>
 
 
 

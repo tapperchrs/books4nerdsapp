@@ -327,7 +327,7 @@ p {
     text-align: center;
     font-size: 22px;
     font-weight: bolder;
-    height: 40px;
+    height: 100px;
     color: #222;
 }
 .items h2 i {
@@ -350,6 +350,7 @@ p {
     height: 150px;
     -webkit-transition: 0.1s;
     transition: 0.1s;
+    margin-bottom: 20px;
 }
 .items img:hover {
     border: 5px solid #DF3770;
