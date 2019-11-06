@@ -7,7 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String isbn = request.getParameter("isbn");
-//    String category = rg.getString("category");
     String sql;
     String dbURI = "jdbc:derby://localhost:1527/bookstore";
     DriverManager.registerDriver(new ClientDriver());
@@ -77,8 +76,9 @@
                     Related Books
                 </h1>
                 <%
-                    
-                    while(rg.next()){
+                    String category = rs.getString("category");
+                    ResultSet rg = stmt.executeQuery("select * from booksquery where category = '" + category + "' fetch first 4 rows only");
+                    while (rg.next()) {
                 %>
                 <div class="col-lg-3">
                     <a href="book.jsp?isbn=<%= rg.getString("isbn")%>"><img src="<%= rg.getString("coverpic")%>" alt=""/></a>
