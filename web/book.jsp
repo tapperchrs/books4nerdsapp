@@ -81,7 +81,9 @@
                     while (rg.next()) {
                 %>
                 <div class="col-lg-3">
-                    <a href="book.jsp?isbn=<%= rg.getString("isbn")%>"><img src="<%= rg.getString("coverpic")%>" alt=""/></a>
+                    <a href="book.jsp?isbn=<%= rg.getString("isbn")%>">
+                        <img src="<%= rg.getString("coverpic")%>" alt=""/>
+                    </a>
                     <p class="col-sm-12 subtitle"><%= rg.getString("title")%></p>
                     <p class="col-sm-12">Price: $<%= rg.getString("price")%></p>
                 </div>
