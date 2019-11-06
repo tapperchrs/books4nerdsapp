@@ -70,8 +70,8 @@
 
                 %>
                 <div class="col-md-3">
-                    <h2><%= rs.getString("title")%></h2>
-                    <img src="<%= rs.getString("coverpic")%>" alt="<%= rs.getString("title")%>"/>
+                    <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><h2><%= rs.getString("title")%></h2></a>
+                    <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><img src="<%= rs.getString("coverpic")%>" alt="<%= rs.getString("title")%>"/></a>
                     <p>Author: <%= rs.getString("au_firstname")%> <%= rs.getString("au_midname")%> <%= rs.getString("au_lastname")%></p>
                     <p>Price: $<%= rs.getString("price")%></p>
                     <p>Publisher: <%= rs.getString("pub_name")%></p>
