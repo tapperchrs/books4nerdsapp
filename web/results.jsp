@@ -13,11 +13,11 @@
     sb.append(keyword);
     sb.append("%' or au_lastname like '%");
     sb.append(keyword);
-    sb.append(" or isbn like '%");
+    sb.append("%' or isbn like '%");
     sb.append(keyword);
-    sb.append(" or keywords like '%");
+    sb.append("%' or keywords like '%");
     sb.append(keyword);
-    sb.append(" or description like '%");
+    sb.append("%' or description like '%");
     sb.append(keyword);
     sb.append("%' order by price desc");
 
@@ -96,8 +96,6 @@
                     }
                 %>
             </div>
-            <p style="text-align: center; margin-top: 40px;" class="cart-title"><a class="btn btn-primary btn-lg" href="#" role="button">View More &raquo;</a></p>            
-
         </div>
 
     </div>
