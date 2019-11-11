@@ -92,19 +92,37 @@
         </div>
         <div class="container">
             <div class="col-lg-6 check">
-                <h1 class="col-lg-12" >Shipping Address</h1>
+                <h1 class="col-lg-12" >Shipping Information</h1>
+                <h2 class="col-sm-6">First Name</h2>
+                <input type="text" placeholder="First Name" class="form-control col-sm-5">
+                
+                <h2 class="col-sm-6">Last Name</h2>
+                <input type="text" placeholder="Last Name" class="form-control col-sm-5">
+                
+                <h2 class="col-sm-6">Email</h2>
+                <input type="text" placeholder="Email" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">Street Address</h2>
                 <input type="text" placeholder="Street Address" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">City</h2>
                 <input type="text" placeholder="City" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">State</h2>
                 <input type="text" placeholder="State" class="form-control col-sm-5">
+                
+                <h2 class="col-sm-6">Country</h2>
+                <input type="text" placeholder="Country" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">ZIP Code</h2>
                 <input type="text" placeholder="ZIP Code" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">Phone Number</h2>
                 <input type="text" placeholder="Phone Number" class="form-control col-sm-5">
+                
                 <h2 class="col-sm-6">Apt/Suite</h2>
                 <input type="text" placeholder="Apt/Suite" class="form-control col-sm-5">
+                
             </div>
             <div class="col-lg-6 check">
                 <h1 class="col-lg-12" >Payment Information</h1>

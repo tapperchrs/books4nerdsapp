@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css">
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -23,11 +23,11 @@
 
 
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Search..." class="form-control search">
-                </div>
-                <button type="submit" class="btn btn-primary" formaction="search.jsp">Search</button>
+            <div class="navbar-form" role="form">
+                <form class="form-group" method="get">
+                    <input type="text" placeholder="Search By Keyword" name="keyword" class="form-control search"/>
+                    <button type="submit" class="btn btn-primary" formaction="results.jsp" onClick="this.form.submit">Search</button>
+                </form>
                 <button type="submit" class="btn btn-primary" formaction="login.jsp">Sign In</button>
                 <div class="form-group shop">
                     <a href="cart.jsp"><i class="material-icons">shopping_cart</i></a>
@@ -44,7 +44,7 @@
                     </a>
                 </p>   
 
-            </form>
+            </div>
         </div>
 
     </div><!--/.navbar-collapse -->
