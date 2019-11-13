@@ -38,10 +38,10 @@
                     <div class="jumbo-content col-lg-8">
                         <h1>Books 4 Nerds Presents:</h1>
                         <h2>Deal of The Day</h2>
-                        <p><%= rs.getString("title")%></p>
+                        <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><p><%= rs.getString("title")%></p></a>
                         <p>15% Off + Free Shipping</p>
                         <div class="mini-img col-md-12">
-                            <img src="images/books4nerds_secondary_black_transparent.png" alt=""/>
+                            <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><img src="images/books4nerds_secondary_black_transparent.png" alt=""/></a>
                         </div>
                         <p class="col-md-12"><a class="btn btn-primary btn-lg" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button">View Book &raquo;</a></p>
 
@@ -65,12 +65,12 @@
                     %>   
 
                     <div class="col-md-4">
-                        <h2><%= rs.getString("title")%></h2>
-                        <img src="<%= rs.getString("coverpic")%>" alt=""/>
+                        <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><h2><%= rs.getString("title")%></h2></a>
+                        <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><img src="<%= rs.getString("coverpic")%>" alt=""/></a>
                         <p id="justify"> <%= rs.getString("description")%> </p>
                         <div class="col-md-12">
-                            <p><a class="btn btn-primary col-md-6" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button"><i class="material-icons">search</i></a>
-                                <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
+                            <p><a class="btn btn-primary col-md-5" href="book.jsp?isbn=<%= rs.getString("isbn")%>" role="button"><i class="material-icons">info</i></a>
+                                <a class="btn btn-primary col-md-5" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
                             </p>
                         </div>                   
                     </div>
