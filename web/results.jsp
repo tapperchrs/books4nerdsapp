@@ -47,7 +47,7 @@
             <div class="sort col-lg-12">
                 <h1>Filter By:</h1>
                 <div class="col-sm-12 sorted">
-
+                    
                     <input class="col-sm-2" style="height:20px!important;" placeholder="ISBN"/>
 
                     <input class="col-sm-2" style="height:20px!important;" placeholder="Author"/>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="items col-md-12">
-                <h1 class="col-lg-12">Search Results</h1>
+                <h1 class="col-lg-12 results">Search Results</h1>
                 <%
                     while (rs.next()) {
 

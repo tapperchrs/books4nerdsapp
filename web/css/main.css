@@ -886,7 +886,9 @@ div #review strong {
         visibility:hidden;
     }
 }
-
+.results {
+    font-family: 'Playfair Display', cursive;
+}
 
 
 
