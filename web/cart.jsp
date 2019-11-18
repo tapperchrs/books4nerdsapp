@@ -3,8 +3,19 @@
     Created on : Oct 28, 2019, 1:27:33 PM
     Author     : 01792538
 --%>
-
+<%@page import="java.sql.*, org.apache.derby.jdbc.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String isbn = request.getParameter("isbn");
+
+    
+
+    String dbURI = "jdbc:derby://localhost:1527/bookstore";
+    DriverManager.registerDriver(new ClientDriver());
+    Connection con = DriverManager.getConnection(dbURI, "app", "app");
+    Statement stmt = con.createStatement();
+    ResultSet rs = stmt.executeQuery("select * from booksquery where isbn = '" + isbn + "'");
+%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->

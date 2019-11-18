@@ -633,7 +633,7 @@ div #review strong {
 
 .cart h1{
     text-align: center;
-    font-family: 'Playfair Display', cursive;
+    font-family: 'Roboto Slab', sans-serif;
     color: #3285DF;
     font-size: 52px;
     padding-top: 15px;
@@ -646,7 +646,7 @@ div #review strong {
 
     color: #222;
     width: 100%;
-    border: 1px solid #222;
+    border: 1px solid #3285DF;
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -693,7 +693,7 @@ div #review strong {
 .labels p {
     padding-bottom: 10px;
     background-color: #FFF;
-    border-bottom: 1px solid #3285DF;
+    border-bottom: 1px solid #DF3770;
 
 }
 @media (max-width:767px) {

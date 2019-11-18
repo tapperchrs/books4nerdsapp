@@ -49,7 +49,7 @@
                     <div class="col-lg-12 btns">
                         <div class="col-md-12">
                             <p><a class="btn btn-primary col-md-6" href="checkout.jsp" role="button"><i class="material-icons">payment</i></a>
-                                <a class="btn btn-primary col-md-6" href="cart.jsp" role="button"><i class="material-icons">add_shopping_cart</i></a>
+                                <a class="btn btn-primary col-md-6" href="cart.jsp?isbn=<%=rs.getString("isbn")%>" role="button"><i class="material-icons">add_shopping_cart</i></a>
                             </p>
                         </div>                       </div>
                 </div>
