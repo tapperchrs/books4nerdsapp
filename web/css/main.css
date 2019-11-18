@@ -105,7 +105,15 @@ nav i:hover {
     text-align: center;
     margin-top: 20px;
     color: #3285DF;
-
+}
+.jumbotron a p:hover {
+    text-decoration: none;
+    color: #DF3770;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+}
+.jumbotron a:hover {
+    text-decoration: none;
 }
 .jumbotron .mini-img img {
     width: 130px!important;
@@ -123,7 +131,7 @@ nav i:hover {
     margin-left: auto;
     display: block;
 }
-.jumbotron .jumbo-image a:hover {
+.jumbotron .jumbo-image img:hover {
     border: 1px solid #3285DF;
     -webkit-transition: 0.1s;
     transition: 0.1s;
@@ -147,6 +155,16 @@ nav i:hover {
     color: #DF3770;
     text-align: center;
     height: 60px;
+}
+
+.landing-content h2:hover {
+    text-decoration: none;
+    color: #3285DF;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
+}
+.landing-content a:hover {
+    text-decoration: none;
 }
 .landing-content img {
     height: 150px;
@@ -182,7 +200,7 @@ footer{
     width: 100%;
 }
 footer .container {
-    border-top: 1px solid #DF3770;
+    border-top: 1px solid #3285DF;
 
 }
 footer p {
@@ -331,6 +349,14 @@ p {
     font-weight: bolder;
     height: 100px;
     color: #222;
+}
+.items a:hover {
+    text-decoration: none;
+}
+.items h2:hover {
+    color: #DF3770;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
 }
 .items h2 i {
     color: #222;
@@ -516,16 +542,17 @@ div #review strong {
     text-align: left;
 }
 .recommend img{
-    width: 208.5px;
+    width: 207px;
     height: auto;
     vertical-align: middle;
     margin: auto auto;
     display: block;
-    border: 5px groove #222;
+    border: 1px solid #3285DF;
+    padding:3px;
 }
 .recommend .content p {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: normal;
     padding-top: 15px;
 }
 .recommend .content h2 {
@@ -545,7 +572,7 @@ div #review strong {
     display: table;
 }
 .rec .bio {
-    background-color: #eee2dc;
+    background-color: #3285DF;
     height:100%;
     border: 1px solid #222;
     vertical-align: middle;
@@ -554,17 +581,19 @@ div #review strong {
     vertical-align: middle;
     margin-right: auto;
     margin-left: auto;
+    padding: 3px;
     display: block;
 }
 .rec .bio p {
-    font-weight: bold;
+    font-weight: normal;
+    color: #FFF!important;
 }
 .rec .bio hr {
     height: 3px;
     background-color: #FFF;
 }
 .bio-info {
-    background-color: #222;
+    background-color: #FFF;
 }
 .rec h1 {
     text-align: left;
@@ -573,15 +602,16 @@ div #review strong {
 .rec .bio-info h2 {
     font-size: 24px;
     font-weight: normal;
-
+    
 
 }
 .rec .bio h2 {
-    font-weight: bold;
+    font-weight: normal;
+    color: #FFF;
 }
 .rec .bio-info p {
     font-size: 18px;
-    color: #FFF!important;
+    color: #3285DF!important;
     font-weight: normal;
 
 }
@@ -594,7 +624,6 @@ div #review strong {
 }
 .rec .bio i:hover {
     color: #FFF;
-    -webkit-text-stroke: 2px #222;
     -webkit-transition: 0.1s;
     transition: 0.1s;
 }
@@ -687,6 +716,7 @@ div #review strong {
 }
 #checkout{
     margin-top: 40px;
+    font-family: 'Roboto Slab', sans-serif!important;
 
 }
 #checkout container {

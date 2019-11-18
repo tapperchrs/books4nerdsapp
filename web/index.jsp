@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="jumbo-image col-lg-4">
-                        <img src="<%= rs.getString("coverpic")%>" alt=""/>
+                        <a href="book.jsp?isbn=<%= rs.getString("isbn")%>"><img src="<%= rs.getString("coverpic")%>" alt=""/></a>
                     </div>
                     <%
 
